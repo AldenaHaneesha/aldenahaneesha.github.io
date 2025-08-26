@@ -1,213 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haneesha Aldena | Portfolio</title>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
-    rel="stylesheet"
-  />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haneesha Aldena | Java & Full‑Stack Developer</title>
+  <meta name="description" content="Portfolio of Haneesha Aldena — Java & Full‑Stack Developer. Spring Boot, React, AWS, microservices, CI/CD, Kafka. Projects, experience, skills, and contact." />
+  <meta name="author" content="Haneesha Aldena" />
+  <link rel="canonical" href="https://www.haneeshaaldena.com/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Haneesha Aldena | Java & Full‑Stack Developer" />
+  <meta property="og:description" content="Spring Boot • React • AWS • Microservices • CI/CD" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.haneeshaaldena.com/" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/0?v=4" />
+
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #0e1117;        /* base dark */
+      --panel:#111827;      /* panels */
+      --text:#e5e7eb;       /* text */
+      --muted:#9ca3af;      /* secondary text */
+      --brand:#22d3ee;      /* cyan */
+      --brand-2:#60a5fa;    /* blue */
+      --accent:#14b8a6;     /* teal */
+      --card:#0b1220;       /* card hover */
+      --border:#1f2937;     /* borders */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    html{scroll-behavior:smooth}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;height:auto}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .section{padding:80px 0;border-top:1px solid var(--border)}
+
+    /* Header */
+    .topbar{position:sticky;top:0;z-index:30;backdrop-filter:saturate(180%) blur(10px);background:linear-gradient(180deg, rgba(14,17,23,.9), rgba(14,17,23,.6));border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .brand b{background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav a{color:var(--text);opacity:.9}
+    .nav a:hover{opacity:1}
+    .menu{display:flex;gap:20px;align-items:center}
+    .menu a{font-weight:500}
+    .hamb{display:none;border:1px solid var(--border);background:transparent;color:var(--text);padding:8px 10px;border-radius:10px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .hero h1{font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin:.2rem 0}
+    .subtitle{font-weight:600;color:#cfe9ff;background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);max-width:62ch}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--panel);color:var(--text);padding:10px 14px;border-radius:12px;font-weight:600;box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#06121a;border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-card{background:linear-gradient(180deg,#0b1220,#0f172a);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+    .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px;color:var(--muted);font-size:14px}
+
+    /* Section headings */
+    .section h2{font-size:clamp(22px,3.2vw,32px);margin:0 0 22px}
+
+    /* Experience */
+    .timeline{display:grid;gap:18px}
+    .item{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px}
+    .item:hover{background:var(--card)}
+    .where{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .badge{font-size:12px;background:#0b2233;border:1px solid var(--border);padding:4px 8px;border-radius:999px;color:#9bdcff}
+    .when{color:var(--muted);font-size:14px}
+    ul.bullets{margin:.4rem 0 0 1.2rem}
+    ul.bullets li{margin:.25rem 0}
+
+    /* Skills */
+    .grid{display:grid;gap:14px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{background:#0b2233;border:1px solid var(--border);color:#b6ecff;padding:6px 10px;border-radius:999px;font-size:13px}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .project{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .project img{aspect-ratio:16/9;object-fit:cover;background:#0a0f1c}
+    .project .p{padding:14px}
+    .project h3{margin:.2rem 0 .4rem;font-size:18px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .field{display:flex;flex-direction:column;gap:8px}
+    input, textarea{background:#0c1424;border:1px solid var(--border);color:var(--text);padding:12px;border-radius:12px}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .menu{display:none}
+      .hamb{display:inline-flex}
+      .projects{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    /* Print */
+    @media print{.topbar,.cta,form,.hamb{display:none} body{background:#fff;color:#111} .section{padding:18px 0}}
+  </style>
 </head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
 
-<body class="bg-dark text-white">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top shadow-3">
-    <div class="container">
-      <a class="navbar-brand" href="#">Haneesha Aldena</a>
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          
-          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand" aria-label="Site brand"><b>Haneesha</b> Aldena</div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.drawer').classList.toggle('open')">☰</button>
     </div>
-  </nav>
+    <!-- mobile drawer -->
+    <nav class="drawer" aria-label="Mobile" style="display:none"></nav>
+  </header>
 
-  <!-- Introduction -->
-  <section id="intro" class="p-5 text-center" data-aos="fade-up">
-    <div class="container">
-      <h1 class="display-4 mb-3">Hi, I'm Haneesha Aldena</h1>
-      <h4 class="mb-4">Full Stack Software Developer | Java | React | AWS | Node.js | Spring Boot</h4>
-      <p class="lead">
-        I’m a Full Stack Developer with a passion for solving real-world problems through technology. I specialize in building scalable web applications and services using modern Java, React, Spring Boot and cloud technologies.
-        With a Master’s in Computer Science and 3+ years of hands-on industry experience, I bring both theoretical knowledge and practical skill to every project I tackle.
-      </p>
-      <p class="lead">
-        I thrive in agile environments, enjoy cross-functional collaboration, and constantly seek to improve both my code and user experiences. Currently seeking new challenges in Full Stack or Backend engineering roles.
-      </p>
-    </div>
-  </section>
-  
-
-  <!-- Resume -->
-  <section id="resume" class="bg-secondary" data-aos="fade-right">
-    <div class="container scrollable-content">
-      <h2 class="mb-4">Professional Experience</h2>
-  
-      <h5>Full Stack Developer, Capital One (01/2024 – Current)</h5>
-      <ul>
-        <li>	Led the development of a Blockchain-Based Insurance Policy System using Hyperledger Fabric and Smart Contracts, improving claims processing speed by 40% and ensuring regulatory compliance.</li>
-        <li>	Built scalable backend services with Java, Spring Boot, and PostgreSQL, and deployed them on AWS (EC2, RDS, S3), supporting 10,000+ monthly transactions and reducing manual intervention by 40%.</li>
-        <li>    Leveraged AWS services (EC2, S3, Lambda) to deploy scalable microservices and serverless workflows for insurance policy management, enhancing availability and reducing infrastructure costs by 25%.</li>
-        <li>	Developed an interactive frontend using React.js, Redux, and Material UI, enhancing user engagement for policy and claim management by 30%.</li>
-        <li>	Automated CI/CD pipelines with Jenkins and GitHub Actions, and containerized microservices with Docker and Kubernetes, accelerating release cycles by 35% and improving deployment consistency.</li>
-        <li>	Collaborated in Agile teams to gather requirements and plan sprints, contributing to a 25% boost in operational efficiency.</li>
-        
-      </ul>
-  
-      <h5>Software Engineer, MAQ Software (12/2021 – 07/2022)</h5>
-      <ul>
-        <li>	Engineered robust backend systems using Java and optimized PL/SQL procedures, triggers, and cursors, improving transaction performance by 35%.</li>
-        <li>	Built a high-efficiency data processing pipeline using AWS EC2, Lambda, and S3 to automate financial data ingestion and transformation, reducing batch processing time by 40% and improving reliability.</li>
-        <li>	Developed a high-efficiency data pipeline on AWS (EC2, Lambda, S3), optimizing query execution and improving overall application performance.</li>
-        <li>	Containerized backend services using Docker and orchestrated deployments with Kubernetes, enabling environment consistency and reducing deployment issues by 35% across development and production environments.</li>
-        <li>	Managed Agile sprints via JIRA, resolving 25-30 stories per sprint and ensuring consistent on-time delivery for Money Market.</li>
-        <li>	Partnered with QA teams to implement automated regression testing, cutting manual effort by 50% and accelerating bug resolution by 30% response time by 0%.</li>
-        <li>	Applied best practices in Git, Postman, and version control for reliable API integration and test coverage.</li>
-		
-      </ul>
-  
-      <h5>Associate Software Engineer, Accenture (11/2020 – 11/2021)</h5>
-      <ul>
-        <li>	Developed and maintained end-to-end full-stack web applications, building robust backend services with Node.js/Express.js and dynamic, responsive user interfaces with React.js.</li>
-        <li>	Engineered secure and scalable REST APIs for core modules like expense management, user authentication, and access control, contributing to a modular microservices architecture hosted on AWS (EC2, RDS, S3).</li>
-        <li>	Implemented CI/CD pipelines using Jenkins and GitHub Actions, integrated with AWS services like Code Deploy and S3, to automate testing and deployments, improving delivery speed and reliability.</li>
-        <li>	Containerized applications using Docker and managed deployments via Kubernetes, leveraging AWS EKS for scalability, high availability, and environment consistency.</li>
-        <li>	Deployed containerized applications on AWS EC2 and managed static asset storage with S3, improving application scalability and reducing infrastructure overhead by 30%.</li>
-        <li>	Collaborated in Agile teams for sprint planning, requirement analysis, and feature development, ensuring timely and user-focused deliverables.</li>
-          
-      </ul>
-  
-      <h3 class="mt-4">Education</h3>
-      <ul>
-        <li><strong>Master of Science in Computer Science</strong>, University of Central Missouri, USA</li>
-        <li><strong>Bachelor of Technology in Computer Science Engineering</strong>, CMR College of Engineering and Technology, India</li>
-      </ul>
-  
-      <h3 class="mt-4">Certifications</h3>
-      <ul>
-        <li>SnowPro Core Certification – 2024</li>
-		<li>AWS Certified Solutions Architect - Associate - 2025</li>
-      </ul>
-    </div>
-  </section>
-  
-
-  <!-- Skills -->
-  <section id="skills" class="p-5" data-aos="fade-left">
-    <div class="container">
-      <h2 class="mb-4 text-center">Technical Skills</h2>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        
-        <div class="col">
-          <div class="bg-dark p-4 h-100 border rounded">
-            <h6 class="text-info">Frontend & Blockchain</h6>
-            <p>React.js, Redux, Angular, D3.js, HTML5, CSS3, JavaScript (ES6+), Bootstrap, Material UII, Hyperledger Fabric, Smart Contracts</p>
-  
-            <h6 class="text-info">Backend & APIs</h6>
-            <p>Java, J2EE, Node.js, Express.js, Spring Boot, RESTful APIs, PL/SQL</p>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="bg-dark p-4 h-100 border rounded">
-            <h6 class="text-info">Testing & QA</h6>
-            <p>Jest, Mocha, Automated Regression Testing</p>
-  
-            <h6 class="text-info">Project Management & Tools</h6>
-            <p>Git, GitHub, JIRA, Postman, Visual Studio Code, IntelliJ, Agile, Scrum</p>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="bg-dark p-4 h-100 border rounded">
-            <h6 class="text-info">Cloud & DevOps</h6>
-            <p>AWS (EC2, S3, Lambda), AWS Cloud Principles, Jenkins, Terraform, CI/CD Pipelines, GitHub Actions, Docker, Kubernetes, Prometheus, Grafana</p>
-  
-            <h6 class="text-info">Databases & Data Streaming</h6>
-            <p>MongoDB, PostgreSQL, SQL Server, MySQL, Apache Kafka</p>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  </section>
-  
-  
-
-  <!-- Projects -->
-  <section id="projects" class="bg-secondary p-5" data-aos="fade-up">
-    <div class="container scrollable-content">
-      <h2 class="mb-4">Projects</h2>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card bg-dark text-white h-100">
-            <div class="card-body">
-              <h5 class="card-title">Insurance Policy System</h5>
-              <p class="card-text">
-                 Engineered a secure, scalable platform using Hyperledger Fabric, Java Spring Boot, React, and AWS to automate policy management and claims processing, improving speed, accuracy, and regulatory compliance.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="card bg-dark text-white h-100">
-            <div class="card-body">
-              <h5 class="card-title">Financial Data Automation System</h5>
-              <p class="card-text">
-                Built a scalable backend platform using Java, PL/SQL, and AWS (EC2, Lambda, S3) to automate financial data ingestion, optimize transaction performance, and streamline Money Market operations.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="card bg-dark text-white h-100">
-            <div class="card-body">
-              <h5 class="card-title">Expense Management Web Platform</h5>
-              <p class="card-text">
-                Built a scalable full-stack application using Node.js, React, and AWS to manage expense tracking, user authentication, and access control within a modular microservices architecture.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-
-  <!-- Contact -->
-  <footer id="contact" class="bg-black text-center text-white py-4">
-    <div class="container">
-      <h4 class="mb-3">Contact Me</h4>
-      <p class="mb-1"><i class="fas fa-envelope me-2"></i> <a href="mailto:haneeshaaldena@gmail.com" class="text-white">haneeshaaldena@gmail.com</a></p>
-      <p class="mb-1"><i class="fas fa-phone me-2"></i> (816) 788-1246</p>
-      <p class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Long Beach, CA, USA</p>
+  <main id="main" class="container">
+    <!-- Hero -->
+    <section class="section hero" id="about">
       <div>
-        <a href="https://www.linkedin.com/in/aldenahaneesha/" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
-        <a href="https://github.com/AldenaHaneesha" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+        <p class="subtitle">Java • Spring Boot • React • AWS • Microservices</p>
+        <h1>Building reliable, scalable systems that ship.</h1>
+        <p class="lead">Full‑stack developer with 3+ years delivering microservices, REST APIs, and cloud‑native apps. I focus on clean code, measurable impact, and smooth releases using Spring Boot, Kafka, Docker/Kubernetes, and CI/CD on AWS.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:haneeshaaldena@gmail.com">Hire me</a>
+          <a class="btn" href="https://www.linkedin.com/in/aldenahaneesha/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/AldenaHaneesha" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://drive.google.com/file/d/1OIgE8xFrbsqGo_1Tj8Pw3TPMcGQ4Gyfc/view?usp=drive_link" target="_blank" rel="noopener">Download Résumé</a>
+        </div>
+        <div class="meta">
+          <div>📧 haneeshaaldena@gmail.com</div>
+          <div>📍 Long Beach, CA (Remote‑friendly)</div>
+          <div>📞 (816) 788‑1246</div>
+          <div>🌐 haneeshaaldena.com</div>
+        </div>
       </div>
-      <hr class="my-3 border-light" />
-      <p class="mb-0 small">© 2025 Haneesha Aldena. All rights reserved.</p>
+      <aside class="hero-card" aria-label="Quick highlights">
+        <h3 style="margin:0 0 8px">Highlights</h3>
+        <ul class="bullets">
+          <li>Reduced claims processing by <b>40%</b> via Hyperledger‑backed workflows.</li>
+          <li>Delivered <b>10k+/mo</b> tx microservices on AWS (EC2, RDS, S3, Lambda).</li>
+          <li>Cut release cycle time <b>35%</b> with Jenkins + GitHub Actions.</li>
+          <li>Built React front‑ends that lifted engagement by <b>30%</b>.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience</h2>
+      <div class="timeline">
+        <article class="item">
+          <div class="where">
+            <h3 style="margin:0">Full Stack Developer — Capital One</h3>
+            <span class="badge">Remote, USA</span>
+          </div>
+          <div class="when">Jan 2024 — Present</div>
+          <ul class="bullets">
+            <li>Designed Spring Boot + PostgreSQL microservices on AWS (EC2, RDS, S3) processing 10k+ monthly transactions.</li>
+            <li>Built Hyperledger Fabric smart‑contract flows for insurance policy & claims; improved processing time by 40%.</li>
+            <li>Implemented Lambda serverless workflows and eventing; reduced infra costs by 25%.</li>
+            <li>Exposed secure REST APIs (OAuth2/JWT), integrated with a React + Redux UI, boosting engagement 30%.</li>
+            <li>Automated CI/CD (Jenkins, GitHub Actions), containerized with Docker, orchestrated on EKS; releases 35% faster.</li>
+            <li>Wrote unit/integration tests with JUnit/Mockito; increased defect detection 40% and stability across services.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="where">
+            <h3 style="margin:0">Software Engineer — MAQ Software</h3>
+            <span class="badge">Hyderabad, IN</span>
+          </div>
+          <div class="when">Dec 2021 — Jul 2022</div>
+          <ul class="bullets">
+            <li>Optimized PL/SQL procedures & queries; improved transaction performance by 35%.</li>
+            <li>Automated data ingestion via AWS EC2, Lambda, S3; reduced batch processing time by 40%.</li>
+            <li>Containerized services (Docker) and deployed on Kubernetes; cut deployment issues by 35%.</li>
+            <li>Established regression testing pipelines; reduced manual QA by 50% and time‑to‑fix by 30%.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="where">
+            <h3 style="margin:0">Full Stack Developer — Accenture</h3>
+            <span class="badge">Hyderabad, IN</span>
+          </div>
+          <div class="when">Nov 2020 — Nov 2021</div>
+          <ul class="bullets">
+            <li>Developed Java/Node REST APIs for authentication, access control & expense management.</li>
+            <li>Automated deployments (Jenkins + CodeDeploy) and containerized workloads for EKS; infra overhead −30%.</li>
+            <li>Led code reviews and testing with JUnit/Mockito; 85%+ coverage across core modules.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Technical Skills</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Languages & Frameworks</h3>
+          <div class="tags">
+            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span><span class="tag">JPA/Hibernate</span>
+            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Cloud & DevOps</h3>
+          <div class="tags">
+            <span class="tag">AWS (EC2, S3, RDS, Lambda)</span><span class="tag">Docker</span><span class="tag">Kubernetes/EKS</span>
+            <span class="tag">Terraform</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Data & Messaging</h3>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">MySQL</span>
+            <span class="tag">Kafka</span><span class="tag">Redis</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Testing & Quality</h3>
+          <div class="tags">
+            <span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Selenium</span>
+            <span class="tag">SonarQube</span><span class="tag">Regression Testing</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Architecture</h3>
+          <div class="tags">
+            <span class="tag">Microservices</span><span class="tag">REST</span><span class="tag">Event‑Driven</span>
+            <span class="tag">Service Discovery</span><span class="tag">API Gateway</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Collaboration</h3>
+          <div class="tags">
+            <span class="tag">Agile/Scrum</span><span class="tag">JIRA</span><span class="tag">Confluence</span>
+            <span class="tag">Code Reviews</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="projects">
+        <article class="project">
+          <img alt="Insurance Policy System UI preview" loading="lazy" src="https://www.eoxegen.com/images/pro06.jpg" />
+          <div class="p">
+            <h3>Insurance Policy System</h3>
+            <p>Spring Boot + Hyperledger Fabric + React + AWS Lambda/EKS; automated claims processing and improved efficiency.</p>
+          </div>
+        </article>
+        <article class="project">
+          <img alt="Financial Data Processing System preview" loading="lazy" src="https://img.freepik.com/premium-photo/financial-data-concept-illustration_839035-444523.jpg" />
+          <div class="p">
+            <h3>Financial Data Processing System</h3>
+            <p>Java + PL/SQL + AWS (Lambda, S3, EC2) + Docker/Kubernetes for automated ingestion and event-driven processing.</p>
+          </div>
+        </article>
+        <article class="project">
+          <img alt="Expense Management Platform preview" loading="lazy" src="https://i0.wp.com/juntrax.com/blog/wp-content/uploads/2020/10/Expenses-Management-System-Juntrax-1.jpg?resize=1536%2C1027&ssl=1" />
+          <div class="p">
+            <h3>Expense Management Platform</h3>
+            <p>Java Spring Boot + Node.js + React + AWS/Kubernetes for secure APIs, automated deployments, and streamlined microservices.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="contact">
+        <form action="https://formspree.io/f/xdkkjzoy" method="POST" aria-label="Contact form">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="msg">Message</label><textarea id="msg" name="message" placeholder="How can I help?" required></textarea></div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+        <aside>
+          <p><b>Prefer email?</b> <a href="mailto:haneeshaaldena@gmail.com">haneeshaaldena@gmail.com</a></p>
+          <p><b>Resume:</b> <a href="https://drive.google.com/file/d/1OIgE8xFrbsqGo_1Tj8Pw3TPMcGQ4Gyfc/view?usp=drive_link" target="_blank" rel="noopener">Download PDF</a></p>
+          <p><b>Social:</b> <a href="https://www.linkedin.com/in/aldenahaneesha/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/AldenaHaneesha" target="_blank" rel="noopener">GitHub</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y"></span> Haneesha Aldena</div>
+      <div>Last updated <time id="updated"></time></div>
     </div>
   </footer>
-  
-  
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+
+  <!-- JSON‑LD Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Haneesha Aldena",
+    "jobTitle": "Software Engineer",
+    "email": "mailto:haneeshaaldena@gmail.com",
+    "url": "https://www.haneeshaaldena.com/",
+    "sameAs": [
+      "https://www.linkedin.com/in/aldenahaneesha/",
+      "https://github.com/AldenaHaneesha"
+    ],
+    "knowsAbout": ["Java","Spring Boot","React","AWS","Microservices","Kafka","Docker","Kubernetes"]
+  }
+  </script>
+
+  <script>
+    // Mobile drawer rendering
+    const drawer = document.querySelector('.drawer');
+    drawer.innerHTML = `
+      <div style="position:fixed;inset:56px 0 auto auto;background:#0b1220;border-left:1px solid var(--border);width:min(320px,86%);height:calc(100% - 56px);padding:18px;box-shadow:var(--shadow)">
+        <a href="#about" onclick="drawer.classList.remove('open')">About</a><br/>
+        <a href="#experience" onclick="drawer.classList.remove('open')">Experience</a><br/>
+        <a href="#skills" onclick="drawer.classList.remove('open')">Skills</a><br/>
+        <a href="#projects" onclick="drawer.classList.remove('open')">Projects</a><br/>
+        <a href="#contact" onclick="drawer.classList.remove('open')">Contact</a>
+      </div>`;
+    const style = document.createElement('style');
+    style.textContent = `.drawer{position:fixed;inset:0;display:none}.drawer.open{display:block;background:rgba(0,0,0,.35)}`;
+    document.head.appendChild(style);
+
+    // Footer meta
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('updated').textContent = new Date().toLocaleDateString();
+  </script>
 </body>
 </html>
